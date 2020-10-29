@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Categoria;
 use App\Establecimiento;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class EstablecimientoController extends Controller
      */
     public function create()
     {
-        //
-        return "desde create";
+        // Consultar las Categorias
+        $categorias = Categoria::all();
+        return  view('establecimientos.create', compact('categorias'));
     }
 
     /**
