@@ -7,15 +7,6 @@ use Illuminate\Http\Request;
 
 class EstablecimientoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,6 +16,7 @@ class EstablecimientoController extends Controller
     public function create()
     {
         //
+        return "desde create";
     }
 
     /**
@@ -58,6 +50,7 @@ class EstablecimientoController extends Controller
     public function edit(Establecimiento $establecimiento)
     {
         //
+        return "desde edit";
     }
 
     /**
