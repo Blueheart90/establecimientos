@@ -16,9 +16,12 @@
         <h1 class="text-center mt-4">Resgistrar Establecimiento</h1>
         <div class="mt-5 row justify-content-center">
             <form
-                action=""
+                action="{{ route('establecimiento.store') }}"
                 class="col-md-9 col-xs-12 card card-body"
+                method="POST"
+                enctype="multipart/form-data"
             >
+                @csrf
                 <fieldset class="border p-4">
                     <legend class="text-primary">Nombre, Categoría e Imagen Principal</legend>
                     <div class="form-group">
@@ -53,7 +56,7 @@
                             @endforeach
                         </select>
 
-                        @error('categoria')
+                        @error('categoria_id')
                             <div class="invalid-feedback">
                                 {{$message}}
                             </div>
@@ -101,6 +104,7 @@
                             id="direccion"
                             class="form-control @error('direccion') is-invalid @enderror"
                             placeholder="Dirección"
+                            name="direccion"
                             value="{{ old('direccion') }}"
                         >
                         @error('direccion')
@@ -116,6 +120,7 @@
                             id="barrio"
                             class="form-control @error('barrio') is-invalid @enderror"
                             placeholder="Barrio"
+                            name="barrio"
                             value="{{ old('barrio') }}"
                         >
                         @error('barrio')
