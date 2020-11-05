@@ -63855,6 +63855,8 @@ var app = new Vue({
 
 __webpack_require__(/*! ./mapa */ "./resources/js/mapa.js");
 
+__webpack_require__(/*! ./dropzone */ "./resources/js/dropzone.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -63968,6 +63970,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/dropzone.js":
+/*!**********************************!*\
+  !*** ./resources/js/dropzone.js ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    Axios = _require["default"];
+
+document.addEventListener('DOMContentLoaded', function () {
+  if (document.querySelector('#dropzone')) {
+    // para que no se instacie automaticamente con el elemento con la clase 'dropzone'
+    Dropzone.autoDiscover = false;
+    var dropzone = new Dropzone('div#dropzone', {
+      url: '/imagenes/store',
+      dictDefaultMessage: 'Sube hasta 10 imágenes',
+      maxFiles: 10,
+      required: true,
+      acceptedFiles: ".png,.jpg,.git,.bmp,.jpeg",
+      addRemoveLinks: true,
+      dictRemoveFile: "Eliminar Imagen",
+      headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
+      },
+      success: function success(file, respuesta) {
+        // console.log(file);
+        // La respuesta que trae en este caso del controller con el metodo store
+        console.log(respuesta);
+        file.nombreServidor = respuesta.archivo;
+      },
+      sending: function sending(file, xhr, formData) {
+        // Se ejecuta cuando se envian algo al server
+        formData.append('uuid', document.querySelector('#uuid').value); // console.log('enviando');
+      },
+      removedfile: function removedfile(file, respuesta) {
+        // console.log(file);
+        var params = {
+          imagen: file.nombreServidor
+        };
+        axios.post('/imagenes/destroy', params).then(function (respuesta) {
+          console.log(respuesta); // Eliminar del DOM
+
+          file.previewElement.parentNode.removeChild(file.previewElement);
+        });
+      }
+    });
+  }
+});
 
 /***/ }),
 

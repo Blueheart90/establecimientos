@@ -9,6 +9,7 @@
     rel="stylesheet"
     href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.css" integrity="sha512-3g+prZHHfmnvE1HBLwUnVuunaPOob7dpksI7/v6UnF/rnKGwHf/GdEq9K7iEN7qTtW+S0iivTcGpeTBqqB04wA==" crossorigin="anonymous" />
 @endsection
 @section('content')
     <div class="container">
@@ -75,7 +76,7 @@
 
 
                 </fieldset>
-                <fieldset class="border p-4">
+                <fieldset class="border p-4 mt-5">
                     <legend class="text-primary">Ubicacion</legend>
                     <div class="form-group">
                         <label for="nombre">Coloca la dirección del Establecimiento</label>
@@ -126,6 +127,83 @@
                     <input type="hidden" id="lat" name="lat" value="{{ old('lat') }}">
                     <input type="hidden" id="lng" name="lng" value="{{ old('lng') }}">
                 </fieldset>
+                <fieldset class="border p-4 mt-5">
+                    <legend  class="text-primary">Información Establecimiento: </legend>
+                        <div class="form-group">
+                            <label for="nombre">Teléfono</label>
+                            <input
+                                type="tel"
+                                class="form-control @error('telefono')  is-invalid  @enderror"
+                                id="telefono"
+                                placeholder="Teléfono Establecimiento"
+                                name="telefono"
+                                value="{{ old('telefono') }}"
+                            >
+
+                                @error('telefono')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label for="nombre">Descripción</label>
+                            <textarea
+                                class="form-control  @error('descripcion')  is-invalid  @enderror"
+                                name="descripcion"
+                            >{{ old('descripcion') }}</textarea>
+
+                                @error('descripcion')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
+                                    </div>
+                                @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nombre">Hora Apertura:</label>
+                            <input
+                                type="time"
+                                class="form-control @error('apertura')  is-invalid  @enderror"
+                                id="apertura"
+                                name="apertura"
+                                value="{{ old('apertura') }}"
+                            >
+                            @error('apertura')
+                                <div class="invalid-feedback">
+                                    {{$message}}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nombre">Hora Cierre:</label>
+                            <input
+                                type="time"
+                                class="form-control @error('cierre')  is-invalid  @enderror"
+                                id="cierre"
+                                name="cierre"
+                                value="{{ old('cierre') }}"
+                            >
+                            @error('cierre')
+                                <div class="invalid-feedback">
+                                    {{$message}}
+                                </div>
+                            @enderror
+                        </div>
+                </fieldset>
+                <fieldset class="border p-4 mt-5">
+                    <legend  class="text-primary">Imagenes del Establecimiento: </legend>
+                    <div class="form-group">
+                        <label for="imagenes">Imagenes</label>
+                        <div id="dropzone" class="dropzone form-control"></div>
+                    </div>
+                </fieldset>
+                <input type="hidden" id="uuid" name="uuid" value=" {{ Str::uuid()->toString()}} ">
+                <input type="submit" class="btn btn-primary mt-3 d-block" value="Registrar Establecimiento">
             </form>
         </div>
 
@@ -141,5 +219,7 @@
 
     <!-- Esri Leaflet Geocoder -->
     <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.js" integrity="sha512-8l10HpXwk93V4i9Sm38Y1F3H4KJlarwdLndY9S5v+hSAODWMx3QcAVECA23NTMKPtDOi53VFfhIuSsBjjfNGnA==" crossorigin="anonymous" defer></script>
 
 @endsection
