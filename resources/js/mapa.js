@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Solo se ejecutara si en el documento existe un elemento con la etiqueta 'mapa'
     if(document.querySelector('#mapa')){
-        const lat = 20.666332695977;
-        const lng = -103.392177745699;
+        const lat = document.querySelector('#lat').value === '' ? 20.666332695977 : document.querySelector('#lat').value;
+        const lng = document.querySelector('#lng').value === '' ? -103.392177745699 : document.querySelector('#lng').value;
 
         const mapa = L.map('mapa').setView([lat, lng], 16);
 

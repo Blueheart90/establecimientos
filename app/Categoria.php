@@ -6,5 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model
 {
-    //
+    // Leer las rutas por slug
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    // Relacion 1:n Categoria y establecimientos
+    public function establecimientos()
+    {
+        return $this->hasMany(Establecimiento::class);
+    }
 }

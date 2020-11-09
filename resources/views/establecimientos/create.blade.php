@@ -82,12 +82,12 @@
                 <fieldset class="border p-4 mt-5">
                     <legend class="text-primary">Ubicacion</legend>
                     <div class="form-group">
-                        <label for="nombre">Coloca la dirección del Establecimiento</label>
+                        <label for="ubicacion">Coloca la dirección del Establecimiento</label>
                         <input
                             type="text"
                             id="formbuscador"
                             placeholder="Calle del Negocio o Establecimiento"
-                            name="nombre"
+                            name="ubicacion"
                             class="form-control"
                         >
                         <p class="text-secondary mt-5 mb-3 text-center">El asistente colocará una dirección estimada, mueve el pin hacia el lugar correcto</p>
