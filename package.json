@@ -24,9 +24,12 @@
         "tailwindcss": "^1.9.6",
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10",
+        "vue2-leaflet": "^2.6.0",
         "vuex": "^3.5.1"
     },
     "dependencies": {
-        "leaflet-geosearch": "^3.0.6"
+        "leaflet": "^1.7.1",
+        "leaflet-geosearch": "^3.0.6",
+        "vue-router": "^3.4.9"
     }
 }

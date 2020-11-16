@@ -10972,3 +10972,7 @@ legend {
   color: #6574cd;
 }
 
+.bg-primary {
+  background-color: #6574cd !important;
+}
+
