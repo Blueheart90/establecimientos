@@ -28,7 +28,10 @@ export default new Vuex.Store({
     // Alternativa a mutations, puede ser algo mas facil de leer
     getters: {
         obtenerEstablecimiento: state => {
-            return state.establecimiento
+            return state.establecimiento;
+        },
+        obtenerImagenes: state => {
+            return state.establecimiento.imagenes;
         }
     }
 });

@@ -2,11 +2,12 @@
     <div class="container my-5">
         <h2 class="text-center mb-5"> {{ establecimiento.nombre }} </h2>
         <div class="row align-items-start">
-            <div class="col-md-8">
+            <div class="col-md-8 order-2">
                 <img :src="`../storage/${establecimiento.imagen_principal}`" class="img-fluid" alt="imagen establecimiento">
                 <p class="mt-2"> {{ establecimiento.descripcion }} </p>
+                <galeria-imagenes></galeria-imagenes>
             </div>
-            <aside class="col-md-4">
+            <aside class="col-md-4 order-1">
                 <div>
                     <mapa-ubicacion></mapa-ubicacion>
                 </div>
@@ -44,10 +45,12 @@
 
 <script>
 import MapaUbicacion from './MapaUbicacion';
+import GaleriaImagenes from './GaleriaImagenes';
 export default {
 
     components: {
-        MapaUbicacion
+        MapaUbicacion,
+        GaleriaImagenes
     },
 
     mounted() {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Establecimiento;
+use App\Image;
 use Illuminate\Http\Request;
 
 class APIController extends Controller
@@ -29,6 +30,10 @@ class APIController extends Controller
     // Muestra un establecimiento en especifico
     public function show(Establecimiento $establecimiento )
     {
+        $imagenes = Image::where('id_establecimiento', $establecimiento->uuid)->get();
+
+        // Agregamos las imagenes que coincidan con el establecimiento al objeto establecimiento
+        $establecimiento->imagenes = $imagenes;
 
         return response()->json($establecimiento);
     }
