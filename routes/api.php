@@ -20,9 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Listado de API
 
-// api/categorias
+// Api/establecimientos
 
+Route::get('/establecimientos', 'APIController@index')->name('establecimientos.index');
 Route::get('/establecimiento/{establecimiento}', 'APIController@show')->name('establecimiento.show');
 
+// Api/categorias
 Route::get('/categorias', 'APIController@categorias')->name('categorias');
 Route::get('/categorias/{categoria}', 'APIController@categoria')->name('categoria');
