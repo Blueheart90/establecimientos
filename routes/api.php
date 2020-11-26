@@ -28,3 +28,4 @@ Route::get('/establecimiento/{establecimiento}', 'APIController@show')->name('es
 // Api/categorias
 Route::get('/categorias', 'APIController@categorias')->name('categorias');
 Route::get('/categorias/{categoria}', 'APIController@categoria')->name('categoria');
+Route::get('/{categoria}', 'APIController@establecimientoscategoria')->name('establecimientoscategoria');
