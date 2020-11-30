@@ -67,3 +67,8 @@ legend {
 .bg-primary {
     background-color: $indigo!important;
 }
+.dropzone .dz-preview .dz-image img {
+    display: block;
+    object-fit: scale-down;
+    width: 200px;
+}

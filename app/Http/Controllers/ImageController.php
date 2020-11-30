@@ -48,8 +48,10 @@ class ImageController extends Controller
 
         if(File::exists('storage/' . $imagen)) {
 
+            // Eliminar imagen del servidor
             File::delete('storage/' . $imagen);
 
+            // Eliminar imagen de la BD
             Images::where('ruta_imagen', '=', $imagen)->delete();
 
 
@@ -57,7 +59,9 @@ class ImageController extends Controller
                 'imagen' => $imagen,
                 'mensaje' => 'Imagen eliminada'
             ];
+
         }else{
+
             $respuesta = [
                 'imagen' => $imagen,
                 'mensaje' => 'No fue posible eliminar la imagen'

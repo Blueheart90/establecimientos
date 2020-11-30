@@ -84378,6 +84378,28 @@ document.addEventListener('DOMContentLoaded', function () {
       headers: {
         'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
       },
+      init: function init() {
+        var _this = this;
+
+        var galeria = document.querySelectorAll('.galeria');
+
+        if (galeria.length > 0) {
+          galeria.forEach(function (imagen) {
+            var imagenPublicada = {}; // En dropzone hay 2 valores obligatorias en el obj, size y name
+
+            imagenPublicada.size = 1;
+            imagenPublicada.name = imagen.value;
+            imagenPublicada.nombreServidor = imagen.value;
+
+            _this.options.addedfile.call(_this, imagenPublicada);
+
+            _this.options.thumbnail.call(_this, imagenPublicada, "/storage/".concat(imagenPublicada.name));
+
+            imagenPublicada.previewElement.classList.add('dz-success');
+            imagenPublicada.previewElement.classList.add('dz-complete');
+          });
+        }
+      },
       success: function success(file, respuesta) {
         // console.log(file);
         // La respuesta que trae en este caso del controller con el metodo store

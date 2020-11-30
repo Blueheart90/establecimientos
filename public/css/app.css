@@ -10976,3 +10976,10 @@ legend {
   background-color: #6574cd !important;
 }
 
+.dropzone .dz-preview .dz-image img {
+  display: block;
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  width: 200px;
+}
+
